@@ -17,20 +17,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const cell = button.closest('td');
             const hanzi = cell.firstChild.textContent.trim(); // Extract Hanzi text
 
-            // If there's any audio currently playing, cancel it
-            if (speechSynthesis.speaking) {
-                speechSynthesis.cancel();
+            // If there's any audio currently playing, pause it
+            if (window.currentAudio) {
+                window.currentAudio.pause();
+                window.currentAudio.currentTime = 0;
             }
 
-            // Play the Hanzi pronunciation using Web Speech API
-            speakWebSpeechAPI(hanzi);
+            // Play the Hanzi pronunciation using Google Translate TTS
+            const audio = speakGoogle(hanzi);
 
-            button.classList.add('playing'); // Add a visual indicator (e.g., animation)
+            if (audio) {
+                button.classList.add('playing'); // Add a visual indicator (e.g., animation)
+                window.currentAudio = audio; // Store the current audio instance
 
-            // When audio ends, remove the playing indicator
-            speechSynthesis.addEventListener('end', () => {
-                button.classList.remove('playing');
-            }, {once: true});
+                // When audio ends, remove the playing indicator
+                audio.onended = () => {
+                    button.classList.remove('playing');
+                    window.currentAudio = null;
+                };
+            }
         }
     });
 
@@ -195,12 +200,20 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {string} text - The text to be spoken.
      * @param {string} lang - The language code (default is 'zh-CN' for Chinese).
      */
-    function speakWebSpeechAPI(text, lang = 'zh-CN') {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.rate = 0.7; // Set the speed to 70% of normal
+    function speakGoogle(text, lang = 'zh') {
+        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        const audio = new Audio(url);
+        
+        // Adjust playback speed for clarity
+        audio.playbackRate = 0.8;
+        
+        // Attempt to play the audio; fallback to another method if there's an error
+        audio.play().catch(error => {
+            console.error('Error playing audio:', error);
+            speak(text, 0.5); // Fallback function (ensure this is defined elsewhere)
+        });
 
-        speechSynthesis.speak(utterance);
+        return audio;
     }
 
     /**
