@@ -74,21 +74,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-async function speakGoogle(text, lang = 'zh-CN', speed = 0.7) {
-    return new Promise((resolve, reject) => {
-        if (!('speechSynthesis' in window)) {
-            console.error("Speech synthesis not supported");
-            reject("Speech synthesis not supported");
-            return;
-        }
+async function speakGoogle(text, lang = 'zh', speed = 1) {
+    const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
 
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.rate = speed;
+    try {
+        const audio = new Audio();
+        audio.src = googleTTSUrl;
+        audio.playbackRate = speed;
 
-        utterance.onend = resolve;
-        utterance.onerror = reject;
+        // Preload the audio
+        await new Promise((resolve, reject) => {
+            audio.oncanplaythrough = resolve;
+            audio.onerror = reject;
+            audio.load();
+        });
 
-        window.speechSynthesis.speak(utterance);
-    });
+        // Play the audio
+        await new Promise((resolve, reject) => {
+            audio.onended = resolve;
+            audio.onerror = reject;
+            audio.play().catch(e => {
+                console.error("Audio playback failed:", e);
+                reject(e);
+            });
+        });
+    } catch (error) {
+        console.error("Error playing audio:", error);
+        throw error;
+    }
 }
