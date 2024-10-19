@@ -202,16 +202,16 @@ document.addEventListener('DOMContentLoaded', function() {
      * @returns {Audio} - The audio object that is playing the speech.
      */
     function speakGoogle(text, lang = 'zh') {
-        const apiUrl = `https://pinyin-word-api.vercel.app/api/audio/${encodeURIComponent(text)}`;
+        const apiUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
         const audio = new Audio(apiUrl);
         
-        // Set the playback rate to 0.8 (80% of normal speed)
-        audio.playbackRate = 0.6;
+        // Imposta la velocità di riproduzione a 0.6 (60% della velocità normale)
+        audio.playbackRate = 0.9;
         
-        // Attempt to play the audio; fallback to another method if there's an error
+        // Tenta di riprodurre l'audio; in caso di errore, passa a un metodo alternativo
         audio.play().catch(error => {
-            console.error('Error playing audio:', error);
-            speak(text, 0.5); // Fallback function (ensure this is defined elsewhere)
+            console.error('Errore durante la riproduzione dell\'audio:', error);
+            speak(text, 0.5); // Funzione di fallback (assicurati che sia definita altrove)
         });
 
         return audio;
