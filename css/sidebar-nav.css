@@ -1,0 +1,135 @@
+.sidebar-nav {
+    position: fixed;
+    left: -250px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 65vh;
+    background-color: rgba(30, 30, 30, 0.85); /* Less transparent background */
+    color: rgba(255, 255, 255, 0.9); /* Less transparent text */
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    transition: left 0.15s ease-out;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px); /* Subtle blur effect */
+}
+
+.sidebar-nav.active {
+    left: 0;
+}
+
+.sidebar-nav pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: rgba(150, 200, 150, 0.9); /* Less transparent color */
+}
+
+.sidebar-nav pre a {
+    color: rgba(220, 180, 150, 0.9); /* Less transparent color */
+}
+
+.sidebar-nav pre a:hover {
+    color: rgba(255, 255, 255, 1); /* Fully opaque on hover */
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin: 10px 0;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav a {
+    color: rgba(220, 180, 150, 0.9); /* Less transparent color */
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+    color: rgba(255, 255, 255, 1); /* Fully opaque on hover */
+}
+
+.sidebar-nav a.active {
+    color: rgba(150, 200, 255, 1); /* Fully opaque for active link */
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.15); /* Subtle background */
+    border-left: 3px solid #3498db; /* Add a left border for better visibility */
+    padding-left: 7px; /* Adjust padding to accommodate the border */
+}
+
+.sidebar-nav .tree-branch {
+    color: #95a5a6;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.sidebar-nav .tree-branch::before {
+    content: '▸ ';
+    color: #3498db;
+}
+
+.sidebar-nav .tree-leaf::before {
+    content: '  ◦ ';
+    color: #3498db;
+}
+
+.sidebar-nav .submenu {
+    display: none;
+    margin-left: 15px;
+    border-left: 1px solid #34495e;
+    padding-left: 10px;
+}
+
+.sidebar-nav .toggle-btn {
+    cursor: pointer;
+    margin-right: 5px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-nav .toggle.open > .toggle-btn {
+    transform: rotate(90deg);
+}
+
+/* Scrollbar styling */
+.sidebar-nav::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Remove the visible activation zone */
+.sidebar-activation-zone {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    z-index: 998;
+    pointer-events: none;
+}

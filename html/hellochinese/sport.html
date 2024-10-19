@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/subpage.css">
+    <link rel="stylesheet" href="../../css/sidebar-nav.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <nav id="sidebar-nav" class="sidebar-nav">
+    </nav>
+
+    <div class="title-container">
+        <div class="navigation-buttons">
+            <a href="javascript:history.back()" class="back-button" aria-label="Go back to previous page">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        <h1 data-en="Hello Chinese">Hello Chinese</h1>
+    </div>
+    
+    <nav>
+        <div class="content-section">
+            <div class="print-buttons-container">
+                <div class="left-group">
+                    <button id="toggleAllButton" class="toggle-all-button" aria-label="Toggle All Pinyin">
+                        <i class="fas fa-language pinyin-icon-dimmed"></i>
+                    </button>
+                    <button id="toggleAllEnglishButton" class="toggle-all-button" aria-label="Toggle All English">
+                        <i class="fas fa-flag-usa usa-flag-dimmed"></i>
+                    </button>
+                </div>
+                <h2 class="table-title">Sports</h2>
+                <div class="right-group">
+                    <!-- New Toggle Drag & Drop Button -->
+                    <button id="toggleDragDropButton" class="toggle-drag-drop-button" aria-label="Toggle Drag and Drop">
+                        <i class="fas fa-lock-open"></i>
+                    </button>
+                    <button class="print-button" id="printButton" aria-label="Print">
+                        <i class="fas fa-print"></i>
+                    </button>
+                </div>
+            </div>
+            <table class="nouns-table">
+                <thead>
+                    <tr>
+                        <th data-en="Hanzi">Hanzi</th>
+                        <th data-en="Pinyin">Pinyin</th>
+                        <th data-en="English">English</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-en="Basketball">
+                            篮球
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="lánqiú" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">lánqiú</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Basketball" class="content-hidden">
+                            <span class="english-content" style="display: none;">Basketball</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Tennis">
+                            网球
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="wǎngqiú" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">wǎngqiú</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Tennis" class="content-hidden">
+                            <span class="english-content" style="display: none;">Tennis</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To play (a sport)">
+                            打
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="dǎ" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">dǎ</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To play (a sport)" class="content-hidden">
+                            <span class="english-content" style="display: none;">To play (a sport)</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To know how to">
+                            会
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="huì" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">huì</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To know how to" class="content-hidden">
+                            <span class="english-content" style="display: none;">To know how to</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Badminton">
+                            羽毛球
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="yǔmáoqiú" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">yǔmáoqiú</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Badminton" class="content-hidden">
+                            <span class="english-content" style="display: none;">Badminton</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To kick">
+                            踢
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="tī" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">tī</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To kick" class="content-hidden">
+                            <span class="english-content" style="display: none;">To kick</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Football/Soccer">
+                            足球
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="zúqiú" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">zúqiú</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Football/Soccer" class="content-hidden">
+                            <span class="english-content" style="display: none;">Football/Soccer</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To ride">
+                            骑
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="qí" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">qí</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To ride" class="content-hidden">
+                            <span class="english-content" style="display: none;">To ride</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Bicycle">
+                            自行车
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="zìxíngchē" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">zìxíngchē</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Bicycle" class="content-hidden">
+                            <span class="english-content" style="display: none;">Bicycle</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Fast">
+                            快
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="kuài" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">kuài</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Fast" class="content-hidden">
+                            <span class="english-content" style="display: none;">Fast</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Slow">
+                            慢
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="màn" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">màn</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Slow" class="content-hidden">
+                            <span class="english-content" style="display: none;">Slow</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Motorcycle">
+                            摩托车
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="mótuōchē" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">mótuōchē</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Motorcycle" class="content-hidden">
+                            <span class="english-content" style="display: none;">Motorcycle</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Good">
+                            好
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="hǎo" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">hǎo</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Good" class="content-hidden">
+                            <span class="english-content" style="display: none;">Good</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To swim">
+                            游泳
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="yóuyǒng" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">yóuyǒng</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To swim" class="content-hidden">
+                            <span class="english-content" style="display: none;">To swim</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To run">
+                            跑步
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="pǎobù" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">pǎobù</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To run" class="content-hidden">
+                            <span class="english-content" style="display: none;">To run</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Bad">
+                            差
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="chà" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">chà</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Bad" class="content-hidden">
+                            <span class="english-content" style="display: none;">Bad</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Baseball">
+                            棒球
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="bàngqiú" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">bàngqiú</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Baseball" class="content-hidden">
+                            <span class="english-content" style="display: none;">Baseball</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </nav>
+
+    <script src="../../javascript/subpage.js"></script>
+    <script src="../../javascript/sidebar-nav.js"></script>
+    <!-- Add Drag and Drop Script -->
+    <script src="../../javascript/drag-drop.js"></script>
+</body>
+</html>

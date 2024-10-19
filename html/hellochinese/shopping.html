@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese - Shopping</title>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/subpage.css">
+    <link rel="stylesheet" href="../../css/sidebar-nav.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <nav id="sidebar-nav" class="sidebar-nav">
+    </nav>
+
+    <div class="title-container">
+        <div class="navigation-buttons">
+            <a href="javascript:history.back()" class="back-button" aria-label="Go back to previous page">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
+        <h1 data-en="Hello Chinese">Hello Chinese</h1>
+    </div>
+    
+    <nav>
+        <div class="content-section">
+            <div class="print-buttons-container">
+                <div class="left-group">
+                    <button id="toggleAllButton" class="toggle-all-button" aria-label="Toggle All Pinyin">
+                        <i class="fas fa-language pinyin-icon-dimmed"></i>
+                    </button>
+                    <button id="toggleAllEnglishButton" class="toggle-all-button" aria-label="Toggle All English">
+                        <i class="fas fa-flag-usa usa-flag-dimmed"></i>
+                    </button>
+                </div>
+                <h2 class="table-title">Shopping</h2>
+                <div class="right-group">
+                    <button id="toggleDragDropButton" class="toggle-drag-drop-button" aria-label="Toggle Drag and Drop">
+                        <i class="fas fa-lock-open"></i>
+                    </button>
+                    <button class="print-button" id="printButton" aria-label="Print">
+                        <i class="fas fa-print"></i>
+                    </button>
+                </div>
+            </div>
+            <table class="nouns-table">
+                <thead>
+                    <tr>
+                        <th data-en="Hanzi">Hanzi</th>
+                        <th data-en="Pinyin">Pinyin</th>
+                        <th data-en="English">English</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-en="To try">
+                            试
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="shì" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">shì</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To try" class="content-hidden">
+                            <span class="english-content" style="display: none;">To try</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To stroll">
+                            逛
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="guàng" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">guàng</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To stroll" class="content-hidden">
+                            <span class="english-content" style="display: none;">To stroll</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To taste">
+                            尝
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="cháng" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">cháng</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To taste" class="content-hidden">
+                            <span class="english-content" style="display: none;">To taste</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Mobile phone">
+                            手机
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="shǒujī" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">shǒujī</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Mobile phone" class="content-hidden">
+                            <span class="english-content" style="display: none;">Mobile phone</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Computer">
+                            电脑
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="diànnǎo" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">diànnǎo</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Computer" class="content-hidden">
+                            <span class="english-content" style="display: none;">Computer</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="How is it">
+                            怎么样
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="zěnmeyàng" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">zěnmeyàng</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="How is it" class="content-hidden">
+                            <span class="english-content" style="display: none;">How is it</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Wallet">
+                            钱包
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="qiánbāo" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">qiánbāo</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Wallet" class="content-hidden">
+                            <span class="english-content" style="display: none;">Wallet</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Watch">
+                            手表
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="shǒubiǎo" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">shǒubiǎo</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Watch" class="content-hidden">
+                            <span class="english-content" style="display: none;">Watch</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To feel">
+                            觉得
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="juéde" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">juéde</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To feel" class="content-hidden">
+                            <span class="english-content" style="display: none;">To feel</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Cash">
+                            现金
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="xiànjīn" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">xiànjīn</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Cash" class="content-hidden">
+                            <span class="english-content" style="display: none;">Cash</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Credit card">
+                            信用卡
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="xìnyòngkǎ" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">xìnyòngkǎ</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Credit card" class="content-hidden">
+                            <span class="english-content" style="display: none;">Credit card</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="To use">
+                            用
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="yòng" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">yòng</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="To use" class="content-hidden">
+                            <span class="english-content" style="display: none;">To use</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-en="Allowed">
+                            可以
+                            <button class="pronunciation-button" aria-label="Pronounce"><i class="fas fa-volume-up"></i></button>
+                        </td>
+                        <td data-en="kěyǐ" class="content-hidden">
+                            <span class="pinyin-content" style="display: none;">kěyǐ</span>
+                            <button class="toggle-button" aria-label="Toggle Pinyin"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                        <td data-en="Allowed" class="content-hidden">
+                            <span class="english-content" style="display: none;">Allowed</span>
+                            <button class="toggle-button" aria-label="Toggle English"><i class="fas fa-eye-slash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </nav>
+
+    <script src="../../javascript/subpage.js"></script>
+    <script src="../../javascript/sidebar-nav.js"></script>
+    <!-- Add Drag and Drop Script -->
+    <script src="../../javascript/drag-drop.js"></script>
+</body>
+</html>

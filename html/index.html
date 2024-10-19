@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chinese</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="../css/sidebar-nav.css">
+</head>
+<body>
+    <nav id="sidebar-nav" class="sidebar-nav"></nav>
+    <div class="title-container">
+        <h1 data-en="Chinese" data-zh="中文 [ Zhōngwén ]">Chinese</h1>
+    </div>
+    
+    <nav>
+        <!-- Grammar Section -->
+        <div class="content-section justify-right">
+            <h2 data-en="Grammar" data-zh="语法 [ Yǔfǎ ]">Grammar</h2>
+            <ul>
+                <li><ion-icon name="git-branch-outline"></ion-icon> <span data-en="Sentence Structure" data-zh="句子结构 [ Jùzi jiégòu ]">Sentence Structure</span></li>
+                <li><ion-icon name="bookmark-outline"></ion-icon> <span data-en="Markers" data-zh="标记 [ Biāojì ]">Markers</span></li>
+                <li><span class="chinese-character">的</span> <span data-en="Particles" data-zh="助词 [ Zhùcí ]">Particles</span></li>
+                <li><ion-icon name="resize-outline"></ion-icon> <span data-en="Measure Words" data-zh="量词 [ Liàngcí ]">Measure Words</span></li>
+                <li><ion-icon name="person-outline"></ion-icon> <span data-en="Pronouns" data-zh="代词 [ Dàicí ]">Pronouns</span></li>
+                <li><ion-icon name="speedometer-outline"></ion-icon> <span data-en="Adverbs" data-zh="副词 [ Fùcí ]">Adverbs</span></li>
+                <li><ion-icon name="color-palette-outline"></ion-icon> <span data-en="Adjectives" data-zh="形容词 [ Xíngróngcí ]">Adjectives</span></li>
+                <li><ion-icon name="move-outline"></ion-icon> <span data-en="Prepositions" data-zh="介词 [ Jiècí ]">Prepositions</span></li>
+                <li><ion-icon name="link-outline"></ion-icon> <span data-en="Conjunctions" data-zh="连词 [ Liáncí ]">Conjunctions</span></li>
+            </ul>
+        </div>
+        
+        <!-- Vocabulary Section -->
+        <div class="content-section">
+            <h2 data-en="Vocabulary" data-zh="词汇 [ Cíhuì ]">Vocabulary</h2>
+            <ul>
+                <li>
+                    <ion-icon name="cube-outline"></ion-icon>
+                    <a href="nouns.html" class="spaced-text" data-en="Nouns" data-zh="名词 [ Míngcí ]">Nouns</a>
+                </li>
+                <li>
+                    <ion-icon name="flash-outline"></ion-icon>
+                    <a href="verbs.html" class="spaced-text" data-en="Verbs" data-zh="动词 [ Dòngcí ]">Verbs</a>
+                </li>
+                <li><ion-icon name="hand-left-outline"></ion-icon> <span class="spaced-text" data-en="Greetings" data-zh="问候 [ Wènhòu ]">Greetings</span></li>
+                <li><ion-icon name="fast-food-outline"></ion-icon> <span class="spaced-text" data-en="Food" data-zh="食物 [ Shíwù ]">Food</span></li>
+                <li><ion-icon name="body-outline"></ion-icon> <span class="spaced-text" data-en="Body" data-zh="身体 [ Shēntǐ ]">Body</span></li>
+                <li>
+                    <ion-icon name="language-outline"></ion-icon>
+                    <a href="hellochinese.html" class="spaced-text" data-en="Hello Chinese" data-zh="你好中文 [ Nǐ hǎo Zhōngwén ]">Hello Chinese</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Language Toggle Buttons -->
+    <div class="language-toggle-container left">
+        <button id="language-toggle-en" aria-label="Switch to English">English</button>
+    </div>
+
+    <div class="language-toggle-container right">
+        <button id="language-toggle-zh" aria-label="Switch to Chinese">中文</button>
+    </div>
+
+    <script src="../javascript/main.js"></script>
+    <script src="../javascript/sidebar-nav.js"></script>
+</body>
+</html>
