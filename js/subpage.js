@@ -202,11 +202,11 @@ document.addEventListener('DOMContentLoaded', function() {
      * @returns {Audio} - The audio object that is playing the speech.
      */
     function speakGoogle(text, lang = 'zh') {
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        const audio = new Audio(url);
+        const apiUrl = `https://pinyin-word-api.vercel.app/api/audio/${encodeURIComponent(text)}`;
+        const audio = new Audio(apiUrl);
         
-        // Adjust playback speed for clarity
-        audio.playbackRate = 0.8;
+        // Set the playback rate to 0.8 (80% of normal speed)
+        audio.playbackRate = 0.6;
         
         // Attempt to play the audio; fallback to another method if there's an error
         audio.play().catch(error => {
