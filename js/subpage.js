@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const chineseText = this.closest('tr').querySelector('td:first-child').textContent;
             try {
                 this.classList.add('playing');
-                await speakGoogle(chineseText, 'zh-CN', 0.7); // Adjust the speed here
+                await speakGoogle(chineseText, 'zh-CN');
                 this.classList.remove('playing');
             } catch (error) {
                 console.error("Error playing pronunciation:", error);
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-async function speakGoogle(text, lang, speed = 0.7) {
+async function speakGoogle(text, lang) {
     if (!('speechSynthesis' in window)) {
         console.error("Speech synthesis not supported");
         return;
@@ -73,27 +73,8 @@ async function speakGoogle(text, lang, speed = 0.7) {
     return new Promise((resolve, reject) => {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
-        utterance.rate = speed;
-
-        // Get available voices and try to find a Chinese voice
-        const voices = window.speechSynthesis.getVoices();
-        const chineseVoice = voices.find(voice => voice.lang.includes('zh-') && voice.localService);
-        
-        if (chineseVoice) {
-            utterance.voice = chineseVoice;
-        } else {
-            console.warn("No suitable Chinese voice found. Using default voice.");
-        }
-
         utterance.onend = resolve;
         utterance.onerror = reject;
         window.speechSynthesis.speak(utterance);
     });
-}
-
-// Ensure voices are loaded
-if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = () => {
-        // Voices are now loaded, you can use them
-    };
 }
