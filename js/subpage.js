@@ -17,25 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const cell = button.closest('td');
             const hanzi = cell.firstChild.textContent.trim(); // Extract Hanzi text
 
-            // If there's any audio currently playing, pause it
-            if (window.currentAudio) {
-                window.currentAudio.pause();
-                window.currentAudio.currentTime = 0;
+            // If there's any audio currently playing, cancel it
+            if (speechSynthesis.speaking) {
+                speechSynthesis.cancel();
             }
 
-            // Play the Hanzi pronunciation using Google Translate TTS
-            const audio = speakGoogle(hanzi);
+            // Play the Hanzi pronunciation using Web Speech API
+            speakWebSpeechAPI(hanzi);
 
-            if (audio) {
-                button.classList.add('playing'); // Add a visual indicator (e.g., animation)
-                window.currentAudio = audio; // Store the current audio instance
+            button.classList.add('playing'); // Add a visual indicator (e.g., animation)
 
-                // When audio ends, remove the playing indicator
-                audio.onended = () => {
-                    button.classList.remove('playing');
-                    window.currentAudio = null;
-                };
-            }
+            // When audio ends, remove the playing indicator
+            speechSynthesis.addEventListener('end', () => {
+                button.classList.remove('playing');
+            }, {once: true});
         }
     });
 
@@ -196,25 +191,16 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleAllButton.addEventListener('click', toggleAllContent);
 
     /**
-     * Function to Play Audio Using Google Translate TTS
+     * Function to Play Audio Using Web Speech API
      * @param {string} text - The text to be spoken.
-     * @param {string} lang - The language code (default is 'zh' for Chinese).
-     * @returns {Audio} - The audio object that is playing the speech.
+     * @param {string} lang - The language code (default is 'zh-CN' for Chinese).
      */
-    function speakGoogle(text, lang = 'zh') {
-        const apiUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        const audio = new Audio(apiUrl);
-        
-        // Imposta la velocità di riproduzione a 0.6 (60% della velocità normale)
-        audio.playbackRate = 0.9;
-        
-        // Tenta di riprodurre l'audio; in caso di errore, passa a un metodo alternativo
-        audio.play().catch(error => {
-            console.error('Errore durante la riproduzione dell\'audio:', error);
-            speak(text, 0.5); // Funzione di fallback (assicurati che sia definita altrove)
-        });
+    function speakWebSpeechAPI(text, lang = 'zh-CN') {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.7; // Set the speed to 70% of normal
 
-        return audio;
+        speechSynthesis.speak(utterance);
     }
 
     /**
