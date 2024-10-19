@@ -1,86 +1,94 @@
 // Ensure the script runs only after the entire DOM has loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Toggle visibility of English and Pinyin columns
-    const toggleButtons = document.querySelectorAll('.toggle-button');
-    toggleButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const row = this.closest('tr');
-            const englishCell = row.querySelector('td:nth-child(3)');
-            const pinyinCell = row.querySelector('td:nth-child(2)');
-            
-            englishCell.classList.toggle('content-hidden');
-            pinyinCell.classList.toggle('content-hidden');
-        });
-    });
+    console.log("DOM fully loaded");
 
-    // Pronunciation functionality
-    const pronunciationButtons = document.querySelectorAll('.pronunciation-button');
-    pronunciationButtons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const chineseText = this.closest('tr').querySelector('td:first-child').textContent;
-            try {
-                this.classList.add('playing');
-                await speakGoogle(chineseText);
-                this.classList.remove('playing');
-            } catch (error) {
-                console.error("Error playing pronunciation:", error);
-                this.classList.remove('playing');
-            }
+    try {
+        // Toggle visibility of English and Pinyin columns
+        const toggleButtons = document.querySelectorAll('.toggle-button');
+        console.log("Toggle buttons found:", toggleButtons.length);
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                console.log("Toggle button clicked");
+                const row = this.closest('tr');
+                const englishCell = row.querySelector('td:nth-child(3)');
+                const pinyinCell = row.querySelector('td:nth-child(2)');
+                
+                englishCell.classList.toggle('content-hidden');
+                pinyinCell.classList.toggle('content-hidden');
+            });
         });
-    });
 
-    // Toggle all English translations
-    const toggleAllEnglishButton = document.getElementById('toggleAllEnglishButton');
-    if (toggleAllEnglishButton) {
-        toggleAllEnglishButton.addEventListener('click', function() {
-            const englishCells = document.querySelectorAll('.nouns-table td:nth-child(3)');
-            englishCells.forEach(cell => cell.classList.toggle('content-hidden'));
-            
-            const icon = this.querySelector('i');
-            icon.classList.toggle('usa-flag-bright');
-            icon.classList.toggle('usa-flag-dimmed');
+        // Pronunciation functionality
+        const pronunciationButtons = document.querySelectorAll('.pronunciation-button');
+        console.log("Pronunciation buttons found:", pronunciationButtons.length);
+        pronunciationButtons.forEach(button => {
+            button.addEventListener('click', async function() {
+                console.log("Pronunciation button clicked");
+                const chineseText = this.closest('tr').querySelector('td:first-child').textContent;
+                try {
+                    this.classList.add('playing');
+                    await speakGoogle(chineseText);
+                    this.classList.remove('playing');
+                } catch (error) {
+                    console.error("Error playing pronunciation:", error);
+                    this.classList.remove('playing');
+                }
+            });
         });
-    }
 
-    // Toggle all Pinyin
-    const toggleAllButton = document.getElementById('toggleAllButton');
-    if (toggleAllButton) {
-        toggleAllButton.addEventListener('click', function() {
-            const pinyinCells = document.querySelectorAll('.nouns-table td:nth-child(2)');
-            pinyinCells.forEach(cell => cell.classList.toggle('content-hidden'));
-            
-            const icon = this.querySelector('i');
-            icon.classList.toggle('pinyin-icon-bright');
-            icon.classList.toggle('pinyin-icon-dimmed');
-        });
-    }
+        // Toggle all English translations
+        const toggleAllEnglishButton = document.getElementById('toggleAllEnglishButton');
+        if (toggleAllEnglishButton) {
+            toggleAllEnglishButton.addEventListener('click', function() {
+                const englishCells = document.querySelectorAll('.nouns-table td:nth-child(3)');
+                englishCells.forEach(cell => cell.classList.toggle('content-hidden'));
+                
+                const icon = this.querySelector('i');
+                icon.classList.toggle('usa-flag-bright');
+                icon.classList.toggle('usa-flag-dimmed');
+            });
+        }
 
-    // Print functionality
-    const printButton = document.querySelector('.print-button');
-    if (printButton) {
-        printButton.addEventListener('click', function() {
-            window.print();
-        });
+        // Toggle all Pinyin
+        const toggleAllButton = document.getElementById('toggleAllButton');
+        if (toggleAllButton) {
+            toggleAllButton.addEventListener('click', function() {
+                const pinyinCells = document.querySelectorAll('.nouns-table td:nth-child(2)');
+                pinyinCells.forEach(cell => cell.classList.toggle('content-hidden'));
+                
+                const icon = this.querySelector('i');
+                icon.classList.toggle('pinyin-icon-bright');
+                icon.classList.toggle('pinyin-icon-dimmed');
+            });
+        }
+
+        // Print functionality
+        const printButton = document.querySelector('.print-button');
+        if (printButton) {
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+        }
+    } catch (error) {
+        console.error("Error in main script:", error);
     }
 });
 
-async function speakGoogle(text, lang = 'zh', speed = 0.7) {
-    const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+async function speakGoogle(text, lang = 'zh-CN', speed = 0.7) {
+    return new Promise((resolve, reject) => {
+        if (!('speechSynthesis' in window)) {
+            console.error("Speech synthesis not supported");
+            reject("Speech synthesis not supported");
+            return;
+        }
 
-    try {
-        const audio = new Audio(googleTTSUrl);
-        audio.playbackRate = speed;
-        
-        return new Promise((resolve, reject) => {
-            audio.onended = resolve;
-            audio.onerror = reject;
-            audio.play().catch(e => {
-                console.error("Audio playback failed:", e);
-                reject(e);
-            });
-        });
-    } catch (error) {
-        console.error("Error creating audio:", error);
-        throw error;
-    }
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = speed;
+
+        utterance.onend = resolve;
+        utterance.onerror = reject;
+
+        window.speechSynthesis.speak(utterance);
+    });
 }
