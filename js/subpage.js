@@ -196,21 +196,22 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleAllButton.addEventListener('click', toggleAllContent);
 
     /**
-     * Function to Play Audio Using Web Speech API
+     * Function to Play Audio Using Google Translate TTS
      * @param {string} text - The text to be spoken.
-     * @param {string} lang - The language code (default is 'zh-CN' for Chinese).
+     * @param {string} lang - The language code (default is 'zh' for Chinese).
+     * @returns {Audio} - The audio object that is playing the speech.
      */
     function speakGoogle(text, lang = 'zh') {
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        const audio = new Audio(url);
+        const apiUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
+        const audio = new Audio(apiUrl);
         
-        // Adjust playback speed for clarity
-        audio.playbackRate = 0.8;
+        // Imposta la velocità di riproduzione a 0.6 (60% della velocità normale)
+        audio.playbackRate = 0.9;
         
-        // Attempt to play the audio; fallback to another method if there's an error
+        // Tenta di riprodurre l'audio; in caso di errore, passa a un metodo alternativo
         audio.play().catch(error => {
-            console.error('Error playing audio:', error);
-            speak(text, 0.5); // Fallback function (ensure this is defined elsewhere)
+            console.error('Errore durante la riproduzione dell\'audio:', error);
+            speak(text, 0.5); // Funzione di fallback (assicurati che sia definita altrove)
         });
 
         return audio;
