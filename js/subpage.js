@@ -10,33 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
      * This handles the functionality when a pronunciation button is clicked.
      * It plays the corresponding audio for the selected Hanzi (Chinese character).
      */
-    table.addEventListener('click', function(e) {
-        // Check if the clicked element is within a pronunciation button
-        if (e.target.closest('.pronunciation-button')) {
-            const button = e.target.closest('.pronunciation-button');
-            const cell = button.closest('td');
-            const hanzi = cell.firstChild.textContent.trim(); // Extract Hanzi text
-
-            // If there's any audio currently playing, pause it
-            if (window.currentAudio) {
-                window.currentAudio.pause();
-                window.currentAudio.currentTime = 0;
+    document.querySelectorAll('.pronunciation-button').forEach(button => {
+        button.addEventListener('click', async function() {
+            const chineseText = this.closest('tr').querySelector('td:first-child').textContent;
+            try {
+                this.classList.add('playing');
+                await speakGoogle(chineseText, 'zh-CN');
+                this.classList.remove('playing');
+            } catch (error) {
+                console.error("Error playing pronunciation:", error);
+                this.classList.remove('playing');
             }
-
-            // Play the Hanzi pronunciation using Google Translate TTS
-            const audio = speakGoogle(hanzi);
-
-            if (audio) {
-                button.classList.add('playing'); // Add a visual indicator (e.g., animation)
-                window.currentAudio = audio; // Store the current audio instance
-
-                // When audio ends, remove the playing indicator
-                audio.onended = () => {
-                    button.classList.remove('playing');
-                    window.currentAudio = null;
-                };
-            }
-        }
+        });
     });
 
     /**
@@ -201,20 +186,20 @@ document.addEventListener('DOMContentLoaded', function() {
      * @param {string} lang - The language code (default is 'zh' for Chinese).
      * @returns {Audio} - The audio object that is playing the speech.
      */
-    function speakGoogle(text, lang = 'zh') {
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-        const audio = new Audio(url);
-        
-        // Adjust playback speed for clarity
-        audio.playbackRate = 0.8;
-        
-        // Attempt to play the audio; fallback to another method if there's an error
-        audio.play().catch(error => {
-            console.error('Error playing audio:', error);
-            speak(text, 0.5); // Fallback function (ensure this is defined elsewhere)
-        });
-
-        return audio;
+    async function speakGoogle(text, lang) {
+        try {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = lang;
+            
+            // Return a promise that resolves when the speech is done
+            return new Promise((resolve, reject) => {
+                utterance.onend = resolve;
+                utterance.onerror = reject;
+                window.speechSynthesis.speak(utterance);
+            });
+        } catch (error) {
+            console.error("Error in text-to-speech:", error);
+        }
     }
 
     /**
