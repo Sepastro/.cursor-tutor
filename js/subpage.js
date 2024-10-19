@@ -187,11 +187,15 @@ document.addEventListener('DOMContentLoaded', function() {
      * @returns {Audio} - The audio object that is playing the speech.
      */
     async function speakGoogle(text, lang) {
+        if (!('speechSynthesis' in window)) {
+            console.error("Speech synthesis not supported");
+            return;
+        }
+
         try {
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = lang;
             
-            // Return a promise that resolves when the speech is done
             return new Promise((resolve, reject) => {
                 utterance.onend = resolve;
                 utterance.onerror = reject;
