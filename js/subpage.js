@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const chineseText = this.closest('tr').querySelector('td:first-child').textContent;
             try {
                 this.classList.add('playing');
-                await speakGoogle(chineseText);
+                await speakGoogle(chineseText, 'zh-CN', 0.7); // Adjust the speed here
                 this.classList.remove('playing');
             } catch (error) {
                 console.error("Error playing pronunciation:", error);
@@ -64,21 +64,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-async function speakGoogle(text, lang = 'zh', speed = 0.7) {
-    const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
-
-    try {
-        const audio = new Audio(googleTTSUrl);
-        audio.playbackRate = speed;
-        
-        return new Promise((resolve, reject) => {
-            audio.onended = resolve;
-            audio.onerror = reject;
-            audio.play();
-        });
-    } catch (error) {
-        console.error("Error playing audio:", error);
+async function speakGoogle(text, lang, speed = 0.7) {
+    if (!('speechSynthesis' in window)) {
+        console.error("Speech synthesis not supported");
+        return;
     }
+
+    return new Promise((resolve, reject) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = speed;
+
+        // Get available voices and try to find a Chinese voice
+        const voices = window.speechSynthesis.getVoices();
+        const chineseVoice = voices.find(voice => voice.lang.includes('zh-') && voice.localService);
+        
+        if (chineseVoice) {
+            utterance.voice = chineseVoice;
+        } else {
+            console.warn("No suitable Chinese voice found. Using default voice.");
+        }
+
+        utterance.onend = resolve;
+        utterance.onerror = reject;
+        window.speechSynthesis.speak(utterance);
+    });
 }
 
 // Ensure voices are loaded
