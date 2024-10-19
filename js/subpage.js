@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const chineseText = this.closest('tr').querySelector('td:first-child').textContent;
             try {
                 this.classList.add('playing');
-                await speakGoogle(chineseText, 'zh-CN');
+                await speakGoogle(chineseText);
                 this.classList.remove('playing');
             } catch (error) {
                 console.error("Error playing pronunciation:", error);
@@ -64,17 +64,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-async function speakGoogle(text, lang) {
-    if (!('speechSynthesis' in window)) {
-        console.error("Speech synthesis not supported");
-        return;
-    }
+async function speakGoogle(text, lang = 'zh', speed = 0.7) {
+    const googleTTSUrl = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=${lang}&client=tw-ob`;
 
-    return new Promise((resolve, reject) => {
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = lang;
-        utterance.onend = resolve;
-        utterance.onerror = reject;
-        window.speechSynthesis.speak(utterance);
-    });
+    try {
+        const audio = new Audio(googleTTSUrl);
+        audio.playbackRate = speed;
+        
+        return new Promise((resolve, reject) => {
+            audio.onended = resolve;
+            audio.onerror = reject;
+            audio.play().catch(e => {
+                console.error("Audio playback failed:", e);
+                reject(e);
+            });
+        });
+    } catch (error) {
+        console.error("Error creating audio:", error);
+        throw error;
+    }
 }
