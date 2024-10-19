@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section Select</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/sidebar-nav.css">
-    <link rel="stylesheet" href="../css/sectionselect.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/sidebar-nav.css">
+    <link rel="stylesheet" href="css/sectionselect.css">
+    <link rel="stylesheet" href="css/subpage.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,6 +17,11 @@
 <body>
     <nav id="sidebar-nav" class="sidebar-nav"></nav>
     <div class="title-container">
+        <div class="navigation-buttons">
+            <a href="javascript:history.back()" class="back-button" aria-label="Go back to previous page">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+        </div>
         <h1 data-en="Section Select" data-zh="选择部分 [ Xuǎnzé bùfèn ]">Section Select</h1>
     </div>
     
@@ -35,7 +41,7 @@
         <button id="language-toggle-zh" aria-label="Switch to Chinese">中文</button>
     </div>
 
-    <script src="../javascript/main.js"></script>
-    <script src="../javascript/sidebar-nav.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sidebar-nav.js"></script>
 </body>
 </html>
